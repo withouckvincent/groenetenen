@@ -5,9 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 
-import org.hibernate.validator.constraints.Range;
-
 import com.sun.istack.NotNull;
+
+import be.vdab.groenetenen.constraints.Postcode;
 
 @Embeddable
 public class Adres implements Serializable {
@@ -17,7 +17,8 @@ public class Adres implements Serializable {
 	@NotBlank
 	private String huisNr;
 	@NotNull
-	@Range(min = 1000, max = 9999)
+	//@Range(min = 1000, max = 9999)
+	@Postcode
 	private int postcode;
 	@NotBlank
 	private String gemeente;
