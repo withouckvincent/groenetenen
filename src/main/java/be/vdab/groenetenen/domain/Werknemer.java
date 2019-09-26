@@ -41,6 +41,8 @@ public class Werknemer implements Serializable {
 	@Digits(integer = 10, fraction = 2)
 	private BigDecimal wedde;
 	private long rijksregisterNr;
+	
+	
 // je maakt getters alle private variabelen, behalve voor serialVersionUID
 	public long getId() {
 		return id;
