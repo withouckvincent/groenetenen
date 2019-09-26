@@ -4,5 +4,6 @@
 		<class>be.vdab.groenetenen.domain.Adres</class>
 		<class>be.vdab.groenetenen.domain.Filiaal</class>
 		<class>be.vdab.groenetenen.domain.Werknemer</class>
+		<class>be.vdab.groenetenen.entities.Offerte</class>
 	</persistence-unit>
 </persistence>
