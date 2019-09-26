@@ -30,27 +30,35 @@ import com.sun.istack.NotNull;
 @Table(name = "filialen")
 public class Filiaal implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	@NotBlank
 	private String naam;
+	
 	private boolean hoofdFiliaal;
+	
 	@NumberFormat(style = Style.NUMBER)
 	@NotNull
 	@PositiveOrZero
 	@Digits(integer = 10, fraction = 2)
 	private BigDecimal waardeGebouw;
+	
 	@DateTimeFormat(style = "S-")
 	@NotNull
 	private LocalDate inGebruikName;
+	
 	@Valid
 	@Embedded
 	private Adres adres;
+	
 	@Version
 	private long versie;
-// Je maakt getters voor id, naam, hoofdFiliaal, waardeGebouw, inGebruiName, adres
+
 	@OneToMany(mappedBy = "filiaal")
+	
 	private Set<Werknemer> werknemers;
 
 	public Set<Werknemer> getWerknemers() {

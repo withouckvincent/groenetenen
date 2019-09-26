@@ -10,18 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PositiveOrZero;
 
-import org.springframework.format.annotation.NumberFormat.Style;
 import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "werknemers")
+@NamedEntityGraph(name = Werknemer.MET_FILIAAL,attributeNodes = @NamedAttributeNode("filiaal") )
 public class Werknemer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -42,6 +45,7 @@ public class Werknemer implements Serializable {
 	private BigDecimal wedde;
 	private long rijksregisterNr;
 	
+	public static final String MET_FILIAAL="Werknemer.metFiliaal";
 	
 // je maakt getters alle private variabelen, behalve voor serialVersionUID
 	public long getId() {
