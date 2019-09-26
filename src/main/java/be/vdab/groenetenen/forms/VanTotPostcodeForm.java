@@ -4,6 +4,9 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
+import be.vdab.groenetenen.constraints.VanTotPostcodeFormVanKleinerDanOfGelijkAanTot;
+
+@VanTotPostcodeFormVanKleinerDanOfGelijkAanTot
 public class VanTotPostcodeForm {
 	@NotNull
 	@Range(min = 1000, max = 9999)
