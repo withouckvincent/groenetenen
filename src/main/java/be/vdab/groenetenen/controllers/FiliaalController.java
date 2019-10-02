@@ -1,5 +1,6 @@
 package be.vdab.groenetenen.controllers;
 
+import java.util.Locale;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -30,7 +31,9 @@ class FiliaalController {
 	}
 
 	@GetMapping("vantotpostcode")
-	ModelAndView vanTotPostcode(@Valid VanTotPostcodeForm form, Errors errors) {
+	ModelAndView vanTotPostcode(@Valid VanTotPostcodeForm form, Errors errors,Locale locale) { // taal van gebruiker lezen met Locale
+		System.out.println(locale.getDisplayLanguage()); // taal
+	
 		ModelAndView modelAndView = new ModelAndView("vantotpostcode");
 		if (!errors.hasErrors()) {
 			modelAndView.addObject("filialen", filiaalService.findByPostcode(form.getVan(), form.getTot()));
