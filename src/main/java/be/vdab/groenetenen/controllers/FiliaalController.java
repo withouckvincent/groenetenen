@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,8 @@ import be.vdab.groenetenen.forms.VanTotPostcodeForm;
 import be.vdab.groenetenen.services.FiliaalService;
 
 @Controller
-@RequestMapping("filialen")
+//@RequestMapping("filialen") //
+@RequestMapping(path = "filialen", produces = MediaType.TEXT_HTML_VALUE)
 class FiliaalController {
 	private final FiliaalService filiaalService;
 
