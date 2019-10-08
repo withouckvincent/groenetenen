@@ -18,7 +18,7 @@
 		<dt>Type</dt>
 		<dd th:text="*{hoofdFiliaal} ? 'Hoofdfiliaal' : 'Bijfiliaal'"></dd>
 		<dt>Waarde gebouw</dt>
-		<dd th:text="*{{waardeGebouw}}"></dd>
+		<dd><span th:text="*{{waardeGebouw}}"></span><a th:href="@{/euro/{euro}/naardollar(euro=*{waardeGebouw})}"> in $</a></dd>
 		<dt>In gebruikname</dt>
 		<dd th:text="*{{inGebruikName}}"></dd>
 	</dl>
