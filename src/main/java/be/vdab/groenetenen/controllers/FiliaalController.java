@@ -33,9 +33,10 @@ class FiliaalController {
 	}
 
 	@GetMapping("vantotpostcode")
-	ModelAndView vanTotPostcode(@Valid VanTotPostcodeForm form, Errors errors,Locale locale) { // taal van gebruiker lezen met Locale
+	ModelAndView vanTotPostcode(@Valid VanTotPostcodeForm form, Errors errors, Locale locale) { // taal van gebruiker
+																								// lezen met Locale
 		System.out.println(locale.getDisplayLanguage()); // taal
-	
+
 		ModelAndView modelAndView = new ModelAndView("vantotpostcode");
 		if (!errors.hasErrors()) {
 			modelAndView.addObject("filialen", filiaalService.findByPostcode(form.getVan(), form.getTot()));
@@ -48,6 +49,11 @@ class FiliaalController {
 		ModelAndView modelAndView = new ModelAndView("filiaal");
 		optionalFiliaal.ifPresent(filiaal -> modelAndView.addObject(filiaal));
 		return modelAndView;
+	}
+
+	@GetMapping("perid")
+	String findById() {
+		return "filiaalPerId";
 	}
 
 }
