@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.sun.istack.NotNull;
 
 import be.vdab.groenetenen.constraints.Postcode;
 
