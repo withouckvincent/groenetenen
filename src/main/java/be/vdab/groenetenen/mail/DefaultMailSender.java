@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import be.vdab.groenetenen.entities.Offerte;
@@ -37,7 +36,7 @@ public class DefaultMailSender implements MailSender {
 	 */
 
 	@Override
-	@Async
+	//@Async // mag verwijderd worden als je met JMS werkt (alles gebeurd op de achtergrond)
 	public void nieuweOfferte(Offerte offerte, String offertesURL) {
 		try {
 			MimeMessage message = sender.createMimeMessage();
