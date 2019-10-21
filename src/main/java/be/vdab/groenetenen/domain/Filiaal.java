@@ -39,34 +39,34 @@ import be.vdab.groenetenen.adapters.LocalDateAdapter;
 @Table(name = "filialen")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@JsonAutoDetect(fieldVisibility=Visibility.ANY)
+@JsonAutoDetect(fieldVisibility = Visibility.ANY)
 public class Filiaal implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotBlank
 	private String naam;
-	
+
 	private boolean hoofdFiliaal;
-	
+
 	@NumberFormat(style = Style.NUMBER)
 	@NotNull
 	@PositiveOrZero
 	@Digits(integer = 10, fraction = 2)
 	private BigDecimal waardeGebouw;
-	
+
 	@DateTimeFormat(style = "S-")
 	@NotNull
 	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
 	private LocalDate inGebruikName;
-	
+
 	@Valid
 	@Embedded
 	private Adres adres;
-	
+
 	@Version
 	private long versie;
 
@@ -102,9 +102,9 @@ public class Filiaal implements Serializable {
 	public Adres getAdres() {
 		return adres;
 	}
-	
-	
-	
-	
-	
+
+	public void afschrijven() {
+		waardeGebouw = BigDecimal.ZERO;
+	}
+
 }

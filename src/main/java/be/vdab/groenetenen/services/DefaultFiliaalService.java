@@ -2,6 +2,7 @@ package be.vdab.groenetenen.services;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ class DefaultFiliaalService implements FiliaalService {
 	}
 
 	@Override
+	@PreAuthorize("hasAuthority('manager')")
 	public List<Filiaal> findByPostcode(int van, int tot) {
 
 		return filiaalRepository.findByAdresPostcodeBetweenOrderByAdresPostcode(van, tot);
@@ -50,6 +52,12 @@ class DefaultFiliaalService implements FiliaalService {
 	@Override
 	public List<Filiaal> findAll() {
 		return filiaalRepository.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
+	public void afschrijven(long id) {
+		filiaalRepository.findById(id).ifPresent(filiaal -> filiaal.afschrijven());
 	}
 
 }
